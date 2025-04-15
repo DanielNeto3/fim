@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Fim 🎉</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #f472b6, #facc15, #4ade80);
+      background-size: 600% 600%;
+      animation: gradientAnimation 10s ease infinite;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    @keyframes gradientAnimation {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    h1 {
+      font-size: 4em;
+      margin-bottom: 30px;
+      color: #fff;
+      animation: pulse 1.5s infinite;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.9; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .gif-container {
+      position: absolute;
+      top: 20%;
+      z-index: 0;
+      opacity: 0.1;
+      transition: opacity 1s ease;
+    }
+
+    .gif-container.hide {
+      opacity: 0;
+    }
+
+    .progress-container {
+      width: 80%;
+      background-color: #333;
+      border-radius: 20px;
+      overflow: hidden;
+      opacity: 0.03;
+    }
+
+    .progress-bar {
+      height: 30px;
+      width: 0%;
+      background-color: purple;
+      text-align: center;
+      line-height: 30px;
+      color: white;
+      font-weight: bold;
+      transition: width 0.2s ease;
+    }
+
+    .concluido {
+      opacity: 1 !important;
+      background-color: #22c55e !important;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="gif-container" id="gif-container">
+    <img src="img\eye_no_background.gif" alt="GIF animado" width="300">
+  </div>
+
+  <h1>🎉 FIM 🎉</h1>
+
+  <div class="progress-container">
+    <div class="progress-bar" id="progress-bar">Extraindo informações: 0%</div>
+  </div>
+
+  <script>
+    let progress = 0;
+    const progressBar = document.getElementById('progress-bar');
+    const gifContainer = document.getElementById('gif-container');
+
+    const interval = setInterval(() => {
+      progress++;
+      progressBar.style.width = progress + '%';
+
+      if (progress < 100) {
+        progressBar.textContent = `Extraindo informações: ${progress}%`;
+      } else {
+        clearInterval(interval);
+        progressBar.textContent = "Concluído!";
+        progressBar.classList.add('concluido');
+        gifContainer.classList.add('hide'); 
+      }
+    }, 50);
+  </script>
+
+</body>
+</html>
+
+
+
+
